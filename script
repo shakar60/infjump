@@ -1,0 +1,18 @@
+-- Infinite jump toggle
+local infiniteJumpEnabled = true -- Automatically enabled
+
+-- Infinite jump logic
+local player = game.Players.LocalPlayer
+local userInputService = game:GetService("UserInputService")
+
+userInputService.JumpRequest:Connect(function()
+    if infiniteJumpEnabled then
+        local character = player.Character
+        if character then
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+            end
+        end
+    end
+end)
